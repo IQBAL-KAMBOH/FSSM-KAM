@@ -112,6 +112,16 @@ class TransferPointController extends Controller
         $user = User::where('id','!=',$loggedInUser)->get();
         return view('modules.Balance_Transfer.transfer_points_cWallet',compact(['user']));
     }
+    public function B2bWallet(){
+        $loggedInUser = Auth::user()->id;
+        $user = User::where('id','!=',$loggedInUser)->get();
+        return view('modules.Balance_Transfer.transfer_points_b2b',compact(['user']));
+    }
+    public function B2cWallet(){
+        $loggedInUser = Auth::user()->id;
+        $user = User::where('id','!=',$loggedInUser)->get();
+        return view('modules.Balance_Transfer.transfer_points_b2c',compact(['user']));
+    }
 
 
 
@@ -170,6 +180,12 @@ class TransferPointController extends Controller
             }else if($request->point_type=='CBV'){
               
                 $cbv=$this->updateCBV($request->user_id,$request->points,$request->type);
+            }else if($request->point_type=='b2b'){
+              
+                $cbv=$this->updateB2B($request->user_id,$request->points,$request->type);
+            }else if($request->point_type=='b2c'){
+              
+                $cbv=$this->updateB2C($request->user_id,$request->points,$request->type);
             }
     
             return redirect()->back()->with('success',"Points Transferred Successfully");

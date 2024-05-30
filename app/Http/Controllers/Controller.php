@@ -292,6 +292,42 @@ class Controller extends BaseController
             
             return $NewUser;
     }
+    public function updateB2B($id,$points,$type)
+    {
+            $NewUser=0;
+            $user =User::where('id',$id)->first();
+            if($user){
+                $old_points=$user->b2b_bv_wallet;
+                if($type=='up'){
+                    $new_points=$old_points+$points;
+                }else if($type=='down'){
+                    $new_points=$old_points-$points;
+                }
+                $NewUser =User::where('id',$id)->update(['b2b_bv_wallet'=>$new_points]);
+            }
+            
+            
+            return $NewUser;
+    }
+    public function updateB2C($id,$points,$type)
+    {
+            $NewUser=0;
+            $user =User::where('id',$id)->first();
+            if($user){
+                $old_points=$user->b2c_pv_wallet;
+                if($type=='up'){
+                    $new_points=$old_points+$points;
+                }else if($type=='down'){
+                    $new_points=$old_points-$points;
+                }
+                $NewUser =User::where('id',$id)->update(['b2c_pv_wallet'=>$new_points]);
+            }
+            
+            
+            return $NewUser;
+    }
+    
+
     public function indirectPairCommission($user_id)
     {
             

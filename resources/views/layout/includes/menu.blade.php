@@ -309,7 +309,7 @@
     </li>
 
 
-            <li class="menu {{request()->is('transfer-admin-dp') || request()->is('transfer-admin-store-bv')  || request()->is('transfer-admin-store') || request()->is('transfer-admin-future') || request()->is('transfer-admin-earning') || request()->is('transfer-admin-cbv') ||  request()->is('transfer-admin-cpv')  ||  request()->is('transfer-admin-bv') ||  request()->is('transfer-admin-rp') || request()->is('c-wallet') || request()->is('transfer-store-pv-wallet') || request()->is('transfer-c_wallet') || request()->is('balance-recieved') || request()->is('balance-sent') || request()->is('transfer') || request()->is('transfer/*') ? 'active' : ''}}">
+            <li class="menu {{request()->is('transfer-admin-dp') || request()->is('transfer-admin-store-bv') || request()->is('transfer-b2b_bv_wallet') || request()->is('transfer-b2c_pv_wallet') || request()->is('transfer-admin-store') || request()->is('transfer-admin-future') || request()->is('transfer-admin-earning') || request()->is('transfer-admin-cbv') ||  request()->is('transfer-admin-cpv')  ||  request()->is('transfer-admin-bv') ||  request()->is('transfer-admin-rp') || request()->is('c-wallet') || request()->is('transfer-store-pv-wallet') || request()->is('transfer-c_wallet') || request()->is('balance-recieved') || request()->is('balance-sent') || request()->is('transfer') || request()->is('transfer/*') ? 'active' : ''}}">
                 <a href="#bal" data-bs-toggle="collapse" aria-expanded="{{request()->is('transfer-admin-dp') || request()->is('transfer-admin-store-bv')  || request()->is('transfer-admin-store') || request()->is('transfer-admin-future') || request()->is('transfer') || request()->is('transfer/*') ? 'true' : 'false'}}" class="dropdown-toggle">
                     <div class="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-columns"><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18"></path></svg>
@@ -327,6 +327,12 @@
                     </li>
                     <li class="{{ request()->is('transfer-c_wallet') ? 'active' : ''}}">
                         <a href="/transfer-c_wallet">C Wallet </a>
+                    </li>
+                    <li class="{{ request()->is('transfer-b2b_bv_wallet') ? 'active' : ''}}">
+                        <a href="/transfer-b2b_bv_wallet">B2B Pool Points </a>
+                    </li>
+                    <li class="{{ request()->is('transfer-b2c_pv_wallet') ? 'active' : ''}}">
+                        <a href="/transfer-b2c_pv_wallet">B2C Pool Points </a>
                     </li>
                     <li class="{{ request()->is('transfer-admin-rp') ? 'active' : ''}}">
                         <a href="/transfer-admin-rp">Register Points </a>

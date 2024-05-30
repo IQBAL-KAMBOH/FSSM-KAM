@@ -3,7 +3,7 @@
 <div class="layout-px-spacing">
 	<div class="middle-content container-xxl p-0">
 		<div class="col-lg-12">
-			<form action="update-user-rank" method="POST">
+			<form action="{{ route('transfer-points.store') }}" method="POST">
 				@csrf
 				<div class="card mb-4">
 					@if(session()->has('success'))
@@ -27,33 +27,34 @@
 								<span class="m-2 p-2 d-none text-success" id="uname">  </span>
 							</div>
 						</div>
-						
+						<input type="hidden" name="point_type" value="b2c" id="">
 						<div class="row">
 							<div class="form-group mb-4">
-								<label for="name">Select Rank</label>
-								<select class="form-control" value="" name="rank" id="direct_points" required >
+								<label for="name">Select Transfer Type</label>
+								<select class="form-control" value="" name="type" id="direct_points" required >
 								
-								@if (auth()->user()->hasRole('Admin') || auth()->user()->hasDirectPermission('rank_update')) 
+								 @hasrole('Admin')
 								 <option value="">Choose</option>	
-								 <option value="Bronze Star">Bronze Star</option>	
-								 <option value="Silver Star">Silver Star</option>	
-								 <option value="Gold Star">Gold Star</option>	
-								 <option value="Platinum star">Platinum star</option>	
-								 <option value="Ambassador Star">Ambassador Star</option>	
-								 <option value="Ambassador Diamond  Star">Ambassador Diamond  Star</option>	
-								 <option value="Global Ambassador Diamond Star">Global Ambassador Diamond Star</option>	
-								 <option value="Crown Ambassador Diamond Star">Crown Ambassador Diamond Star</option>	
+								 <option value="up">Add Points</option>	
+								 <option value="down">Remove Points</option>	
 								
 
-                                 @endif
+                                 @endhasrole
 								 
 							     </select>
 							</div>
 						</div>
 						<hr>
 						
-                         <input type="hidden" name="point_type" value="up" id="">
-						<button type="submit" class="btn btn-light btn-lg col-md-12 mt-3">Update C Wallet</button>
+						<div class="row">
+							<div class="form-group mb-4">
+								<label for="register_points">Points</label>
+								<input type="number" class="form-control"  name="points" id="register_points" required placeholder="Points" />
+							</div>
+						</div>
+						
+            
+						<button type="submit" class="btn btn-light btn-lg col-md-12 mt-3">Save</button>
 					</div>
 				</div>
 			</form>
@@ -85,6 +86,7 @@
 			$('#uname').removeClass('d-none');
 			$('#uname').html('Transfer to '+ dataResult.data.full_name);
 			$('#user_id').val(dataResult.data.id);
+			
 			$('#user_name').val(dataResult.data.name);
          }else{
   

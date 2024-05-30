@@ -81,6 +81,7 @@ class DashboardController extends Controller
          
             $settings = AdminAccountDetails::find(1);
             $data['b2c_price']=$settings->b2c_price ?? 1;
+            $data['b2c_percentage']=$settings->b2c_pool_percentage ?? 1;
             $data['b2c_pv_wallet']= User::where('user_type','User')->sum('b2c_pv_wallet');
             $permissions = Permission::where('name','b2c_permission')->first();
             $data['b2c_users']=$permissions->users->count();
@@ -119,18 +120,42 @@ class DashboardController extends Controller
        
         return $sid4;
     }
-    public function b2bPoolReset(){
+    public function b2bPoolReset($self){
         $data=User::where('user_type','User')->where('b2b_bv_wallet','>',0)->get();
+        $permissions = Permission::where('name','b2b_permission')->first();
+        $users=$permissions->users;
+        $com=$self/100;
+        
+
+        foreach($users as $user){
+            $userid=$user->id;
+           $this->updateCwallet($userid,$com,'up');
+           
+
+        }
         foreach($data as $d){
             $data2=User::find($d->id);
             $data2->b2b_bv_wallet_converted=$data2->b2b_bv_wallet;
             $data2->b2b_bv_wallet=0;
             $data2->save();
         }
-        return redirect()->back()->with('success','Converted Successfully');
+        return redirect()->to('/dashboard')->with('success','Converted Successfully');
     }
-    public function b2cPoolReset(){
+    public function b2cPoolReset($selfc){
         $data=User::where('user_type','User')->where('b2c_pv_wallet','>',0)->get();
+        $permissions = Permission::where('name','b2c_permission')->first();
+        $users=$permissions->users;
+        $com=$selfc/100;
+        
+
+        foreach($users as $user){
+            $userid=$user->id;
+           $this->updateCwallet($userid,$com,'up');
+           
+
+        }
+        
+        
         foreach($data as $d){
             $data2=User::find($d->id);
             $data2->b2c_pv_wallet_converted=$data2->b2c_pv_wallet;

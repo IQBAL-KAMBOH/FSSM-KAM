@@ -230,6 +230,11 @@
      <input type="number" class="form-control" name="chunk_size" value="{{$data->chunk_size}}" placeholder="Example: 4" />
    
   </div>
+  <div class="col-sm-6">
+     <label for="account">B2C Pool Percentage</label>
+     <input type="number" class="form-control" name="b2c_pool_percentage" value="{{$data->b2c_pool_percentage}}" placeholder="Percentage" />
+   
+  </div>
  
  
 </div>

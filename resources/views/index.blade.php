@@ -763,7 +763,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                         </div>
                         <!-- Unilevel Qualified -->
                          <!-- Auto Net Qualified -->
-                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                         <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-card-five kg21">
                                 <div class="widget-content">
                                     <div class="account-box">
@@ -788,7 +788,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Auto Net Qualified -->
                          <!-- Pv Store -->
                          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
@@ -988,7 +988,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                             @foreach($allusersb as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
-                                <td>{{$self}}</td>
+                                <td>{{number_format($self,2)}}</td>
                             </tr>
 
                             @endforeach
@@ -1013,7 +1013,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                         </div>
                     </div>
                    <div class="row">
-                   <a href="b2b-pool-reset" class="btn btn-warning col-4">Reset Pool</a>
+                   <a href="b2b-pool-reset/{{$self}}" class="btn btn-warning col-4">Reset Pool</a>
                    </div>
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
                         <div class="progress-bar l-bg-cyan" role="progressbar" data-width="{{$percent}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: {{$percent}}%;"></div>
@@ -1027,6 +1027,8 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
         <div class="col-xl-6 col-lg-6">
                           <?php
                             $percentc=$b2cdashboard['b2c_price'];
+                            $percentage=$b2cdashboard['b2c_percentage'];
+                            
                             $pkrc=$percentc;
                             $pv=$b2cdashboard['b2c_pv_wallet'] ?? 0;
                             $commissionc=(10/100*$pv)*$pkrc;
@@ -1077,7 +1079,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                         </div>
                         <div class="col-6 text-end text-light">
                         
-                            <h4 class="text-light">10%</h4>
+                            <h4 class="text-light">{{$percentage}}%</h4>
                         </div>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
@@ -1090,18 +1092,18 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                             
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <table class="table bg-light rounded table-hovered">
                             <tr><th>User Name</th></tr>
                             @foreach($allusersc as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
-                                <td>{{$selfc}}</td>
+                                <td>{{number_format($selfc,2)}}</td>
                             </tr>
 
                             @endforeach
                         </table>
-                    </div>
+                    </div> -->
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-6 text-left">
                             <h6 class=" text-light">Total Commission:</h6>
@@ -1111,7 +1113,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                             <h4 class="text-light">{{number_format($commissionc,2)}}  </h4>
                         </div>
                     </div>
-                    <div class="row align-items-center mb-2 d-flex">
+                    <!-- <div class="row align-items-center mb-2 d-flex">
                         <div class="col-6 text-left">
                             <h6 class=" text-light">Self Commission:</h6>
                         </div>
@@ -1119,9 +1121,9 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                         
                             <h4 class="text-light">{{number_format($selfc,2)}}  </h4>
                         </div>
-                    </div>
+                    </div> -->
                    <div class="row">
-                   <a href="b2c-pool-reset" class="btn btn-warning col-4">Reset Pool</a>
+                   <a href="b2c-pool-reset/{{$selfc}}" class="btn btn-warning col-4">Reset Pool</a>
                    </div>
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
                         <div class="progress-bar l-bg-cyan" role="progressbar" data-width="{{$percentc}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: {{$percentc}}%;"></div>
@@ -1158,7 +1160,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
 		@endif
 		<?php
           $package=App\Http\Controllers\User\UserController::checkUserPackage(auth()->user()->id);
-         
+         echo $package;
           $globalSettings=App\Http\Controllers\Admin\AdminAccountDetailsController::globalSettings();
           $mysponser=App\Http\Controllers\User\UserController::mySponser(auth()->user()->refral_id);
           $refral_paid=$mysponser->plan_id ?? 0;
@@ -1555,7 +1557,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                        
 			<!-- ////////////////////////// Refral Link-->
             
-            @if($package || $copyPerm>0)
+            @if($package>0 || $copyPerm>0)
                          <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                             <div class="widget widget-card-five kg6">
                                 <div class="widget-content">
@@ -1838,6 +1840,7 @@ style="fill:#40C057;">
                           <div class="col-xl-6 col-lg-6">
                           <?php
                             $percent=$b2cdashboard['b2c_price'];
+                            $percentage=$b2cdashboard['b2c_percentage'];
                             $pkr=$percent;
                             $pv=$b2cdashboard['b2c_pv_wallet'] ?? 0;
                             $commission=(10/100*$pv)*$pkr;
@@ -1888,7 +1891,7 @@ style="fill:#40C057;">
                         </div>
                         <div class="col-6 text-end text-light">
                         
-                            <h4 class="text-light">10%</h4>
+                            <h4 class="text-light">{{$percentage}}%</h4>
                         </div>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
@@ -1911,7 +1914,7 @@ style="fill:#40C057;">
                             <h4 class="text-light">{{number_format($commission,2)}}  </h4>
                         </div>
                     </div>
-                    <div class="row align-items-center mb-2 d-flex">
+                    <!-- <div class="row align-items-center mb-2 d-flex">
                         <div class="col-6 text-left">
                             <h6 class=" text-light">Self Commission:</h6>
                         </div>
@@ -1919,7 +1922,7 @@ style="fill:#40C057;">
                         
                             <h4 class="text-light">{{number_format($self,2)}}  </h4>
                         </div>
-                    </div>
+                    </div> -->
                   
                     <div class="progress mt-1 " data-height="8" style="height: 8px;">
                         <div class="progress-bar l-bg-cyan" role="progressbar" data-width="{{$percent}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: {{$percent}}%;"></div>

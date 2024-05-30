@@ -18,7 +18,23 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
-  
+    public static function checkUserPackage($userId)
+    {
+        $user = User::find($userId);
+
+        if ($user) {
+            // Assuming you have a relationship set up between users and plans
+            // For example, you might have a pivot table named 'user_plans' to store user-plan associations
+            $plans = $user->plan_id;
+
+            // Check if the user has any plans associated
+           
+                return $plans;
+            
+        }
+
+        return false; // User does not have any plans
+    }
 
     public function update(Request $request,$id){
 
