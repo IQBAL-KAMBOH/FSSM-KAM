@@ -1051,7 +1051,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                             
                             $pkrc=$percentc;
                             $pv=$b2cdashboard['b2c_pv_wallet'] ?? 0;
-                            $commissionc=(10/100*$pv)*$pkrc;
+                            $commissionc=($percentage/100*$pv)*$pkrc;
                             $usersc=$b2cdashboard['b2c_users'];
                             $allusersc=$b2cdashboard['b2c_user_names'];
                             if($usersc>0){
@@ -1897,7 +1897,7 @@ $copyPerm=App\Http\Controllers\Admin\DashboardController::checkRefralPermission(
                             $percentage=$b2cdashboard['b2c_percentage'];
                             $pkr=$percent;
                             $pv=$b2cdashboard['b2c_pv_wallet'] ?? 0;
-                            $commission=(10/100*$pv)*$pkr;
+                            $commission=($percentage/100*$pv)*$pkr;
                             $users=$b2cdashboard['b2c_users'];
                             $allusers=$b2cdashboard['b2c_user_names'];
                             if($users>0){
