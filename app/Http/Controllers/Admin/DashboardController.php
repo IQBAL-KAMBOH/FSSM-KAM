@@ -81,7 +81,7 @@ class DashboardController extends Controller
          
             $settings = AdminAccountDetails::find(1);
             $data['b2c_price']=$settings->b2c_price ?? 1;
-            $data['b2c_percentage']=$settings->b2c_pool_percentage ?? 1;
+            $data['b2c_percentage']=$settings->b2c_pool_percentage ?? 10;
             $data['b2c_pv_wallet']= User::where('user_type','User')->sum('b2c_pv_wallet');
             $permissions = Permission::where('name','b2c_permission')->first();
             $data['b2c_users']=$permissions->users->count();

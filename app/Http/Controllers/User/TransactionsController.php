@@ -91,7 +91,7 @@ class TransactionsController extends Controller
 
     public function TransactionHistory(){
         $data = Transaction::with('user')->get();
-        return view('modules.Histories.transaction_History.index',compact(['data']));
+        return view('modules.Histories.Transaction_history.index',compact(['data']));
     }
 
     public function DeleteTransactionHistory(Request $request){
