@@ -344,11 +344,11 @@ Route::resource('/user_kyc', App\Http\Controllers\User\UserKycController::class)
 Route::get('/paid-users/pdf', [App\Http\Controllers\User\UserController::class, 'createPDF']);
 
 Route::resource('/packages', App\Http\Controllers\User\PackagesController::class);
-Route::GET('/all-packages',[App\Http\Controllers\User\packagesController::class,'indexPackages']);
-Route::POST('/edit-package',[App\Http\Controllers\User\packagesController::class,'edit']);
-Route::POST('/get-package',[App\Http\Controllers\User\packagesController::class,'getPackage']);
-Route::POST('/update-package',[App\Http\Controllers\User\packagesController::class,'update']);
-Route::POST('/package-update',[App\Http\Controllers\User\packagesController::class,'packageUpdate']);
+Route::GET('/all-packages',[App\Http\Controllers\User\PackagesController::class,'indexPackages']);
+Route::POST('/edit-package',[App\Http\Controllers\User\PackagesController::class,'edit']);
+Route::POST('/get-package',[App\Http\Controllers\User\PackagesController::class,'getPackage']);
+Route::POST('/update-package',[App\Http\Controllers\User\PackagesController::class,'update']);
+Route::POST('/package-update',[App\Http\Controllers\User\PackagesController::class,'packageUpdate']);
 Route::POST('/update-plan',[App\Http\Controllers\User\PurchasedPlanController::class,'updatePlan']);
 Route::resource('/purchased-plans', App\Http\Controllers\User\PurchasedPlanController::class);
 Route::get('/users_packages', [App\Http\Controllers\User\PurchasedPlanController::class, 'allPackages']);
