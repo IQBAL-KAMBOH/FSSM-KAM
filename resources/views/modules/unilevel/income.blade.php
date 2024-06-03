@@ -112,7 +112,7 @@
 
 <div class="container">
     <div class="row ">
-         @for($i=1;$i<=10;$i++)
+         @for($i=1;$i<=5;$i++)
          <?php
          $percent=0;
          if($i==1){
@@ -130,21 +130,21 @@
           if($i==5){
              $percent=$settings->l5;
           }
-          if($i==6){
-             $percent=$settings->l6;
-          }
-          if($i==7){
-             $percent=$settings->l7;
-          }
-          if($i==8){
-             $percent=$settings->l8;
-          }
-          if($i==9){
-             $percent=$settings->l9;
-          }
-          if($i==10){
-             $percent=$settings->l10;
-          }
+        //   if($i==6){
+        //      $percent=$settings->l6;
+        //   }
+        //   if($i==7){
+        //      $percent=$settings->l7;
+        //   }
+        //   if($i==8){
+        //      $percent=$settings->l8;
+        //   }
+        //   if($i==9){
+        //      $percent=$settings->l9;
+        //   }
+        //   if($i==10){
+        //      $percent=$settings->l10;
+        //   }
          
         
          

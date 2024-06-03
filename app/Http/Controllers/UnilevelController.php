@@ -72,21 +72,21 @@ class UnilevelController extends Controller
                  if($key==5){
                     $percent=$settings->l5;
                  }
-                 if($key==6){
-                    $percent=$settings->l6;
-                 }
-                 if($key==7){
-                    $percent=$settings->l7;
-                 }
-                 if($key==8){
-                    $percent=$settings->l8;
-                 }
-                 if($key==9){
-                    $percent=$settings->l9;
-                 }
-                 if($key==10){
-                    $percent=$settings->l10;
-                 }
+                //  if($key==6){
+                //     $percent=$settings->l6;
+                //  }
+                //  if($key==7){
+                //     $percent=$settings->l7;
+                //  }
+                //  if($key==8){
+                //     $percent=$settings->l8;
+                //  }
+                //  if($key==9){
+                //     $percent=$settings->l9;
+                //  }
+                //  if($key==10){
+                //     $percent=$settings->l10;
+                //  }
                 
 
                 $commission=($percent/100)*$value;
@@ -170,25 +170,25 @@ class UnilevelController extends Controller
             $user5ids =$user5->pluck('id');
             $user1['5'] =$user5->sum('store_bv');
 
-            $user6=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user5ids)->get();
-            $user6ids =$user6->pluck('id');
-            $user1['6'] =$user6->sum('store_bv');
+            // $user6=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user5ids)->get();
+            // $user6ids =$user6->pluck('id');
+            // $user1['6'] =$user6->sum('store_bv');
 
-            $user7=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user6ids)->get();
-            $user7ids =$user7->pluck('id');
-            $user1['7'] =$user7->sum('store_bv');
+            // $user7=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user6ids)->get();
+            // $user7ids =$user7->pluck('id');
+            // $user1['7'] =$user7->sum('store_bv');
 
-            $user8=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user7ids)->get();
-            $user8ids =$user8->pluck('id');
-            $user1['8'] =$user8->sum('store_bv');
+            // $user8=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user7ids)->get();
+            // $user8ids =$user8->pluck('id');
+            // $user1['8'] =$user8->sum('store_bv');
 
-            $user9=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user8ids)->get();
-            $user9ids =$user9->pluck('id');
-            $user1['9'] =$user9->sum('store_bv');
+            // $user9=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user8ids)->get();
+            // $user9ids =$user9->pluck('id');
+            // $user1['9'] =$user9->sum('store_bv');
 
-            $user10=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user9ids)->get();
-            $user10ids =$user10->pluck('id');
-            $user1['10'] =$user10->sum('store_bv');
+            // $user10=User::select('id','store_bv')->whereNotNull('plan_id')->whereIn('refral_id',$user9ids)->get();
+            // $user10ids =$user10->pluck('id');
+            // $user1['10'] =$user10->sum('store_bv');
            
             return $user1;
     }

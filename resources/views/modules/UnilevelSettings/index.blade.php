@@ -99,7 +99,7 @@
 					   <label for="l5">Level 5(%)</label>
 					  <input type="text" id="l5" class="form-control" name="l5" placeholder="%" value="{{$data->l5}}" />
 					</div>
-          <div class="col-6 col-md-2 col-lg-2">
+         {{-- <div class="col-6 col-md-2 col-lg-2">
 					   <label for="l6">Level 6(%)</label>
 					  <input type="text" id="l6" class="form-control" name="l6" placeholder="%" value="{{$data->l6}}" />
 					</div>
@@ -119,6 +119,7 @@
 					   <label for="l10">Level 10(%)</label>
 					  <input type="text" id="l10" class="form-control" name="l10" placeholder="%" value="{{$data->l10}}"  />
 					</div>
+          --}}
 					
 			</div>
         
